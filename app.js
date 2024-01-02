@@ -114,7 +114,7 @@ form.addEventListener("submit", (e) => {
         message
     }
 
-    if (!validData(name, email, message)) return; a
+    if (!validData(name, email, message)) return;
 
     emailjs.send("service_ag7wub4", "template_ti29aa8", templateParams, "fYcNNf5Gm_tJkYQIc")
         .then(response => console.log(response))
