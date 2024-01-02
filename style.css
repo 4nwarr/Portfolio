@@ -1,0 +1,20 @@
+html {
+    overflow-x: hidden;
+}
+
+.slide {
+    transition: .5s;
+}
+
+.hidden {
+    display: none;
+}
+
+.skill {
+    transition: transform 1s, opacity 1s;
+}
+
+.skill--hidden {
+    opacity: 0;
+    transform: translateY(5rem) !important;
+}
