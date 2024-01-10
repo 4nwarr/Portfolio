@@ -44,40 +44,43 @@ let moveSlides = function () {
     slides.forEach((slide, i) => {
         slide.style.transform = `translateX(${(i - currentSlide) * 700}px) scale(0.7)`;
         slide.style.opacity = "0.4";
+        slide.classList.add("inactiveLink");
     });
 
     slides[currentSlide].style.transform = `translateX(0px) scale(1)`;
     slides[currentSlide].style.opacity = "1";
+    slides[currentSlide].classList.remove("inactiveLink");
 }
 
 moveSlides();
 
 rightButton.addEventListener("click", () => {
     currentSlide++;
-    //If the currentSlide is the penultimate then move the first slide to the end
-    if (currentSlide != slidesCount - 2) return;
-
-    let slideToMove = slides[0];
-    slideToMove.classList.add("hidden");
-    slides.push(slideToMove);
-    slides.shift();
-    setTimeout(() => slideToMove.classList.remove("hidden"), 0.1 * 1000);
-    currentSlide--;
+    //If the currentSlide is the penultimate one then move the first slide to the end
+    if (currentSlide == slidesCount - 2) {
+        let slideToMove = slides[0];
+        slideToMove.classList.add("hidden");
+        slides.push(slideToMove);
+        slides.shift();
+        setTimeout(() => slideToMove.classList.remove("hidden"), 0.1 * 1000);
+        currentSlide--;
+    }
     //Translate slides by 1 position
     moveSlides();
 });
 
 leftButton.addEventListener("click", () => {
     currentSlide--;
-    //If the currentSlide is the second then move the last slide to the start
-    if (currentSlide != 1) return;
+    //If the currentSlide is the second one then move the last slide to the start
+    if (currentSlide <= 1) {
 
-    let slideToMove = slides[slidesCount - 1];
-    slideToMove.classList.add("hidden");
-    slides.unshift(slideToMove);
-    slides.pop();
-    setTimeout(() => slideToMove.classList.remove("hidden"), 0.1 * 1000);
-    currentSlide++;
+        let slideToMove = slides[slidesCount - 1];
+        slideToMove.classList.add("hidden");
+        slides.unshift(slideToMove);
+        slides.pop();
+        setTimeout(() => slideToMove.classList.remove("hidden"), 0.1 * 1000);
+        currentSlide++;
+    }
     //Translate slides by 1 position
     moveSlides();
 });

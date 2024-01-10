@@ -18,3 +18,8 @@ html {
     opacity: 0;
     transform: translateY(5rem) !important;
 }
+
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
